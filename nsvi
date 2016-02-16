@@ -111,7 +111,7 @@ RETRY: for (;;) {
     system "$vi $fn";
     fail "failed to $vi $fn" unless $? == 0;
 
-    my $diff = qx{@nsdiff $zone $fn};
+    my $diff = qx{@nsdiff $zone $fn 2> /dev/null};
     if ($? == 0) {
 	wail "no change";
 	exit 0;
